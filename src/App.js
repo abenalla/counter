@@ -10,31 +10,65 @@ class Counter extends Component {
 
   // this is where out methods will be defined
   increment = () => {
+    if (this.state.count >=20){
+      this.setState ({
+        count:20
+      })
+    }else{
     this.setState ({
-      count: this.state.count +1
+      count: this.state.count +1 
     })
-    // this is where your code goes.
+  }
   }
 
   decrement = () => {
-    this.setState ({
-      count: this.state.count -1
+    if (this.state.count <=0){
+    this.setState({
+      count: 0
     })
-    // this is where your code goes.
+  }else{
+    this.setState ({
+      
+      count: this.state.count -1 
+    
+    })
   }
+}
+
+clear = () =>{
+  this.setState({
+    count:0
+  })
+}
+
+doubleCount = () =>{
+  if (this.state.count >=20){
+      this.setState ({
+        count:20
+      })
+    }else{
+    this.setState ({
+      count: this.state.count +2
+    })
+  }
+  }
+
+
   render() {
 
     return(
     <div className = "container">
       <div className = "navbar">Counter.js</div>
       <div className = "counter">
-    <h1>{this.state.count}</h1>
+    <h1>{this.state.count}</h1> 
         <button type ="button" onClick={this.increment}>Increment</button>
         <button type ="button" onClick={this.decrement}>Decrement</button>
+        <button type ="button" onClick={this.clear}>Clear</button>
+        <button type ="button" onClick={this.doubleCount}>Double Count</button>
       </div>
     </div>
     );
   }
-}
+  }
 
 export default Counter;
