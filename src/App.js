@@ -5,6 +5,7 @@ class Counter extends Component {
     super();
     this.state = {
       count: 0,
+      doubleCount: false,
     };
   }
 
@@ -41,16 +42,22 @@ clear = () =>{
   })
 }
 
-doubleCount = () =>{
-  if (this.state.count >=20){
+double = () =>{
+  if (this.state.doubleCount){
       this.setState ({
-        count:20
+        doubleCount:false,
+        count: this.state.count +2 
+      
       })
+      // console.log(this.state.doubleCount)
     }else{
     this.setState ({
-      count: this.state.count +2
+      doubleCount: true,
+      count: this.state.count +1 
+      // console.log(this.state.doubleCount)
     })
   }
+
   }
 
 
@@ -64,7 +71,7 @@ doubleCount = () =>{
         <button type ="button" onClick={this.increment}>Increment</button>
         <button type ="button" onClick={this.decrement}>Decrement</button>
         <button type ="button" onClick={this.clear}>Clear</button>
-        <button type ="button" onClick={this.doubleCount}>Double Count</button>
+    <button type ="button" onClick={this.double}>{this.state.doubleCount ? 'Double Count' : 'Single Count'}</button>
       </div>
     </div>
     );
